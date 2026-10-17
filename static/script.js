@@ -42,9 +42,9 @@ const sendMessage = async (message) => {
   messagesContainer.appendChild(loadingtextElement);
 
   async function makePostRequest(msg) {
-    const url = 'www.example.com';  // Make a POST request to this url
+    const url = '/chatbot';  // Make a POST request to this url
     const requestBody = {
-      prompt: msg
+      message: msg
     };
   
     try {
@@ -56,7 +56,7 @@ const sendMessage = async (message) => {
         body: JSON.stringify(requestBody)
       });
   
-      const data = await response.text();
+      const data = await response.json();
       // Handle the response data here
       console.log(data);
       return data;
@@ -67,9 +67,7 @@ const sendMessage = async (message) => {
     }
   }
   
-  var res = await makePostRequest(message);
-  
-  data = {"response": res};
+  const data = await makePostRequest(message);;
   
   // Deleting the loading animation
   const loadanimation = document.querySelector('.loading-animation');

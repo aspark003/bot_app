@@ -3,3 +3,6 @@ DS*
 DS*/
 .DS_*
 
+bot_app_venv/
+
+.vscode/
